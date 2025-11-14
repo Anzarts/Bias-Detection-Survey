@@ -1,0 +1,120 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{machine-bias-book}
+Angwin, J., Larson, J., Mattu, S., Kirchner, L.: Machine bias. In: Ethics of data and analytics, pp. 254--264. Auerbach Publications (2022)
+
+\bibitem{fairness-survey}
+Bansal, R.: A survey on bias and fairness in natural language processing (2022), \url{https://arxiv.org/abs/2204.09591}
+
+\bibitem{synthetisizing-Barbalau}
+Barbalau, A., Cosma, A., Ionescu, R.T., Popescu, M.: A generic and model-agnostic exemplar synthetization framework for explainable ai. In: Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2020, Ghent, Belgium, September 14--18, 2020, Proceedings, Part II. pp. 190--205. Springer (2021)
+
+\bibitem{critical-survey-on-bias}
+Blodgett, S.L., Barocas, S., Daum{\'e}~III, H., Wallach, H.: Language (technology) is power: A critical survey of ``bias'' in {NLP}. In: Jurafsky, D., Chai, J., Schluter, N., Tetreault, J. (eds.) Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics. pp. 5454--5476. Association for Computational Linguistics, Online (Jul 2020). \doi{10.18653/v1/2020.acl-main.485}, \url{https://aclanthology.org/2020.acl-main.485/}
+
+\bibitem{man-is-to-computer}
+Bolukbasi, T., Chang, K.W., Zou, J.Y., Saligrama, V., Kalai, A.T.: Man is to computer programmer as woman is to homemaker? debiasing word embeddings. In: Lee, D., Sugiyama, M., Luxburg, U., Guyon, I., Garnett, R. (eds.) Advances in Neural Information Processing Systems. vol.~29. Curran Associates, Inc. (2016), \url{https://proceedings.neurips.cc/paper_files/paper/2016/file/a486cd07e4ac3d270571622f4f316ec5-Paper.pdf}
+
+\bibitem{WEAT}
+Caliskan, A., Bryson, J.J., Narayanan, A.: Semantics derived automatically from language corpora contain human-like biases. Science  \textbf{356}(6334),  183--186 (2017). \doi{10.1126/science.aal4230}, \url{https://www.science.org/doi/abs/10.1126/science.aal4230}
+
+\bibitem{measures-of-fairness}
+Corbett-Davies, S., Gaebler, J.D., Nilforoshan, H., Shroff, R., Goel, S.: The measure and mismeasure of fairness. J. Mach. Learn. Res.  \textbf{24}(1) (Mar 2024)
+
+\bibitem{quantifying-social-bias}
+Czarnowska, P., Vyas, Y., Shah, K.: Quantifying social biases in nlp: A generalization and empirical comparison of extrinsic fairness metrics. Transactions of the Association for Computational Linguistics  \textbf{9},  1249--1267 (11 2021). \doi{10.1162/tacl_a_00425}, \url{https://doi.org/10.1162/tacl_a_00425}
+
+\bibitem{geo-lexical-variation}
+Eisenstein, J., O’Connor, B., Smith, N.A., Xing, E.: A latent variable model for geographic lexical variation. In: Proceedings of the 2010 conference on empirical methods in natural language processing. pp. 1277--1287 (2010)
+
+\bibitem{RIPA}
+Ethayarajh, K., Duvenaud, D., Hirst, G.: Understanding undesirable word embedding associations (2019), \url{https://arxiv.org/abs/1908.06361}
+
+\bibitem{NLP-risk-child-protective-service}
+Field, A., Coston, A., Gandhi, N., Chouldechova, A., Putnam-Hornstein, E., Steier, D., Tsvetkov, Y.: Examining risks of racial biases in nlp tools for child protective services. In: Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency. p. 1479–1492. FAccT '23, Association for Computing Machinery, New York, NY, USA (2023). \doi{10.1145/3593013.3594094}, \url{https://doi.org/10.1145/3593013.3594094}
+
+\bibitem{intrinsic-not-correlate}
+Goldfarb-Tarrant, S., Marchant, R., Mu{\~n}oz~S{\'a}nchez, R., Pandya, M., Lopez, A.: Intrinsic bias metrics do not correlate with application bias. In: Zong, C., Xia, F., Li, W., Navigli, R. (eds.) Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers). pp. 1926--1940. Association for Computational Linguistics, Online (Aug 2021). \doi{10.18653/v1/2021.acl-long.150}, \url{https://aclanthology.org/2021.acl-long.150/}
+
+\bibitem{lipstick}
+Gonen, H., Goldberg, Y.: Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them (2019), \url{https://arxiv.org/abs/1903.03862}
+
+\bibitem{counterfactual-explanations}
+Guidotti, R.: Counterfactual explanations and how to find them: literature review and benchmarking. Data Mining and Knowledge Discovery pp. 1--55 (2022)
+
+\bibitem{CEAT}
+Guo, W., Caliskan, A.: Detecting emergent intersectional biases: Contextualized word embeddings contain a distribution of human-like biases. In: Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society. p. 122–133. AIES '21, Association for Computing Machinery, New York, NY, USA (2021). \doi{10.1145/3461702.3462536}, \url{https://doi.org/10.1145/3461702.3462536}
+
+\bibitem{sociodemographic-bias}
+Gupta, V., Narayanan~Venkit, P., Wilson, S., Passonneau, R.: Sociodemographic bias in language models: A survey and forward path. In: Fale{\'n}ska, A., Basta, C., Costa-juss{\`a}, M., Goldfarb-Tarrant, S., Nozza, D. (eds.) Proceedings of the 5th Workshop on Gender Bias in Natural Language Processing (GeBNLP). pp. 295--322. Association for Computational Linguistics, Bangkok, Thailand (Aug 2024). \doi{10.18653/v1/2024.gebnlp-1.19}, \url{https://aclanthology.org/2024.gebnlp-1.19/}
+
+\bibitem{social-media-language}
+Kern, M.L., Park, G., Eichstaedt, J.C., Schwartz, H.A., Sap, M., Smith, L.K., Ungar, L.H.: Gaining insights from social media language: Methodologies and challenges. Psychological methods  \textbf{21}(4), ~507 (2016)
+
+\bibitem{circuit-breaking}
+Li, M., Davies, X., Nadeau, M.: Circuit breaking: Removing model behaviors with targeted ablation (2024), \url{https://arxiv.org/abs/2309.05973}
+
+\bibitem{GYC}
+Madaan, N., Padhi, I., Panwar, N., Saha, D.: Generate your counterfactuals: Towards controlled counterfactual generation for text. Proceedings of the AAAI Conference on Artificial Intelligence  \textbf{35}(15),  13516--13524 (May 2021). \doi{10.1609/aaai.v35i15.17594}, \url{https://ojs.aaai.org/index.php/AAAI/article/view/17594}
+
+\bibitem{NLP-posthoc-interpret-survey}
+Madsen, A., Reddy, S., Chandar, S.: Post-hoc interpretability for neural nlp: A survey. ACM Comput. Surv.  \textbf{55}(8) (dec 2022). \doi{10.1145/3546577}, \url{https://doi.org/10.1145/3546577}
+
+\bibitem{geometry-of-truth}
+Marks, S., Tegmark, M.: The geometry of truth: Emergent linear structure in large language model representations of true/false datasets (2024), \url{https://arxiv.org/abs/2310.06824}
+
+\bibitem{SEAT}
+May, C., Wang, A., Bordia, S., Bowman, S.R., Rudinger, R.: On measuring social biases in sentence encoders (2019), \url{https://arxiv.org/abs/1903.10561}
+
+\bibitem{bias-and-fairness-in-ML}
+Mehrabi, N., Morstatter, F., Saxena, N., Lerman, K., Galstyan, A.: A survey on bias and fairness in machine learning. ACM Comput. Surv.  \textbf{54}(6) (Jul 2021). \doi{10.1145/3457607}, \url{https://doi.org/10.1145/3457607}
+
+\bibitem{embedding-relations-1}
+Mikolov, T., Yih, W.t., Zweig, G.: Linguistic regularities in continuous space word representations. In: Proceedings of the 2013 conference of the north american chapter of the association for computational linguistics: Human language technologies. pp. 746--751 (2013)
+
+\bibitem{synthetisizing-Nguyen}
+Nguyen, A., Dosovitskiy, A., Yosinski, J., Brox, T., Clune, J.: Synthesizing the preferred inputs for neurons in neural networks via deep generator networks. In: Lee, D., Sugiyama, M., Luxburg, U., Guyon, I., Garnett, R. (eds.) Advances in Neural Information Processing Systems. vol.~29. Curran Associates, Inc. (2016), \url{https://proceedings.neurips.cc/paper_files/paper/2016/file/5d79099fcdf499f12b79770834c0164a-Paper.pdf}
+
+\bibitem{Weapons-of-math-destruction}
+O'neil, C.: Weapons of math destruction: How big data increases inequality and threatens democracy. Crown (2017)
+
+\bibitem{indirect-effect}
+Pearl, J.: Direct and Indirect Effects, p. 373–392. Association for Computing Machinery, New York, NY, USA, 1 edn. (2022), \url{https://doi.org/10.1145/3501714.3501736}
+
+\bibitem{secret-life-of-pronouns}
+Pennebaker, J.W.: The secret life of pronouns. New Scientist  \textbf{211}(2828),  42--45 (2011). \doi{https://doi.org/10.1016/S0262-4079(11)62167-2}, \url{https://www.sciencedirect.com/science/article/pii/S0262407911621672}
+
+\bibitem{gender-resume-differences}
+Qu, Q., Liu, Q.H., Gao, J., Huang, S., Feng, W., Yue, Z., Lu, X., Zhou, T., Lv, J.: Gender differences in resume language and gender gaps in salary expectations. Journal of The Royal Society Interface  \textbf{22}(227),  20240784 (2025). \doi{10.1098/rsif.2024.0784}, \url{https://royalsocietypublishing.org/doi/abs/10.1098/rsif.2024.0784}
+
+\bibitem{GPT-2}
+Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., Sutskever, I., et~al.: Language models are unsupervised multitask learners. OpenAI blog  \textbf{1}(8), ~9 (2019)
+
+\bibitem{R-LACE}
+Ravfogel, S., Twiton, M., Goldberg, Y., Cotterell, R.D.: Linear adversarial concept erasure. In: Chaudhuri, K., Jegelka, S., Song, L., Szepesvari, C., Niu, G., Sabato, S. (eds.) Proceedings of the 39th International Conference on Machine Learning. Proceedings of Machine Learning Research, vol.~162, pp. 18400--18421. PMLR (17--23 Jul 2022), \url{https://proceedings.mlr.press/v162/ravfogel22a.html}
+
+\bibitem{kernelized-concept-erasure}
+Ravfogel, S., Vargas, F., Goldberg, Y., Cotterell, R.: Adversarial concept erasure in kernel space. In: Goldberg, Y., Kozareva, Z., Zhang, Y. (eds.) Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing. pp. 6034--6055. Association for Computational Linguistics, Abu Dhabi, United Arab Emirates (Dec 2022). \doi{10.18653/v1/2022.emnlp-main.405}, \url{https://aclanthology.org/2022.emnlp-main.405/}
+
+\bibitem{MiCE}
+Ross, A., Marasović, A., Peters, M.E.: Explaining nlp models via minimal contrastive editing (mice) (2021), \url{https://arxiv.org/abs/2012.13985}
+
+\bibitem{embedding-relations-2}
+Rubenstein, H., Goodenough, J.B.: Contextual correlates of synonymy. Commun. ACM  \textbf{8}(10),  627–633 (Oct 1965). \doi{10.1145/365628.365657}, \url{https://doi.org/10.1145/365628.365657}
+
+\bibitem{predictive-bias-NLP}
+Shah, D.S., Schwartz, H.A., Hovy, D.: Predictive biases in natural language processing models: A conceptual framework and overview. In: Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics. Association for Computational Linguistics (2020). \doi{10.18653/v1/2020.acl-main.468}, \url{http://dx.doi.org/10.18653/v1/2020.acl-main.468}
+
+\bibitem{gradient-attribution}
+Simonyan, K., Vedaldi, A., Zisserman, A.: Deep inside convolutional networks: Visualising image classification models and saliency maps (2014), \url{https://arxiv.org/abs/1312.6034}
+
+\bibitem{NLP-counterfactual-survey}
+Wang, Y., Qiu, X., Yue, Y., Guo, X., Zeng, Z., Feng, Y., Shen, Z.: A natural language counterfactual generation (2024), \url{https://arxiv.org/abs/2407.03993}
+
+\bibitem{polyjuice}
+Wu, T., Ribeiro, M.T., Heer, J., Weld, D.S.: Polyjuice: Generating counterfactuals for explaining, evaluating, and improving models. arXiv preprint arXiv:2101.00288  (2021)
+
+\end{thebibliography}

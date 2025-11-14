@@ -1,0 +1,66 @@
+\section{\textcolor{red}{Review}}
+\label{sec:review}
+
+\begin{itemize}
+    \item \cite{counterfactual-explanations} defines counterfactual explainers.
+    \item \cite{NLP-counterfactual-survey} gives a taxonomy for NLP counterfactuals.
+    \item \cite{GYC} GYC.
+    \item \cite{MiCE} MiCE.
+    \item \cite{T-PGD} T-PGD.
+    \item \cite{synthetisizing-Nguyen,synthetisizing-Barbalau} preferred input synthesis.
+    \item \cite{counterfactual-fairness} counterfactual fairness.
+    \item \cite{counterfactual-fairness-text-clf} counterfactual fairness in token classification.
+    \item \cite{Causal-mediation-survey,Indirect-effect} causal mediation analysis.
+    \item \cite{Mechanistic-survey} Mechanistic interpretability survey.
+    \item \cite{Adversarial-attack-neuron-activation} Adversarial attacks on the interpretation of neuron activation maximization.
+\end{itemize}
+
+\subsection{Data-Centered Aproach}
+\label{sec:review:data_centered}
+
+
+
+\subsubsection{Preferred Input Synthesis}
+\label{sec:review:data_centered:synthesis}
+
+
+
+\subsubsection{Counterfactual Explanations}
+\label{sec:review:data_centered:counterfactual}
+
+
+
+\subsection{Component-Centered Aproach}
+\label{sec:review:Component_centered}
+
+\subsection{GYC}
+
+Aims to fulfill these counterfactual's properties:
+
+\begin{itemize}
+    \item \textbf{Plausibility:} ensures that the examples are something that could occur.
+    \item \textbf{Diversity:} ensure high coverage of the input space.
+    \item \textbf{Goal-orientedness:} ensures that the examples deviate from the original sample on a particular aspect.
+    \item \textbf{Effectivenes:} ensure the examples are useful for finding test-failures.
+\end{itemize}
+
+The proposed counterfactual explainer can direct the sample generation towards any user-specific contdition. GYC do not requires to train or fine-tune a model.
+
+transformer-based architectures can generate a token $y_t$ conditioned on the past tokens $y_{<t}=\{y_i\}^{t-1}_{i=0}$ as follows
+
+\begin{equation}
+    \begin{split}
+        o_{t}, H_{t} &= \text{LM}(y_{t-1}, H_{t-1})\\
+        y_t &\sim \text{Categorical}(o_t)
+    \end{split}
+\end{equation}
+
+Where $H_{t-1}$ is the history matrix that captures the dependency of $y_{t-1}$ on past tokens and $o_t$ are the logits to sample $y_t$ from a categorical distribution.
+
+GYC generates $K$ counterfactual texts via controlled text generation, from a given text and condition, that delimitates the scope of the counterfactuals.
+
+\begin{equation}
+    \{\tilde{y}_i\}^K_{i=1} \sim P(\tilde{y}|X, \text{condition})
+\end{equation}
+
+This is achieved by perturbating the history matrix two times, first to create $\tilde{H}_t$ which enforces the reconstruction of $X$, and then to create $\hat{H}_t$ which enforces the condition. To learn the perturbations a linear combination of three loss functions is employed, one for reconstruction and one enforce the condition, plus another one to ensure diversity. The reconstruction loss maximizes the log probability of the input text, the condition loss maximizes a score assosiated to the condition and the diversity loss maximizes the entropy of the generated logits.

@@ -1,0 +1,49 @@
+\section{Bias in Predictive Model for NLP}
+\label{sec:bias}
+
+% Bias is the prior information of the models \cite{fairness-survey}
+
+% Bias are priors that inform our desicions. All models have biases, in the broad statistical term \cite{predictive-bias-NLP}
+
+% Bias can be harmful, when it is the result of harmful precedents \cite{WEAT}
+
+% Word embeddings inherit human-like biases \cite{WEAT}
+
+% Language is inherently biases, by the demographic of who uses it \cite{secret-life-of-pronouns,social-media-language,geo-lexical-variation}. This can lead models to pick up pattenrs that do not generalizes to other demographics, or rely on undesired relations, which can lead to unfair decisions \cite{predictive-bias-NLP,bias-and-fairness-in-ML,machine-bias-book,Weapons-of-math-destruction}
+
+% algorithms themselves can display biased behavior due to certain design choices, even if the data itself is not biased \cite{bias-and-fairness-in-ML}
+
+Despite of the large number of works addressing bias in NLP, there is a lack of consensus regarding the definition of bias~\cite{critical-survey-on-bias}. The discusion over the different definitions of bias constitutes a complex sunject that will not be thoroughly addressed in this survey. By prediction bias in NLP, we refer to the prior that a imforms a predictive model to make its predictions~\cite{fairness-survey,predictive-bias-NLP}. In essence, prediction biases are associations between features of the input and the output, encoded in the model. Following this definition, all models have biases, and it is not something inherently ploblematic, but another gear in the model's mechanism.
+
+Biases can be harmful when they come from harmful precedents~\cite{WEAT}. Biases that are not aligned with reality, or are aligned with a reality that we do not wish the model to learn from, are denomined unintended biases~\cite{fairness-survey,predictive-bias-NLP}. This would be the case the association between qualification for the job and a feature that correlate with gender in the hiring model example.
+
+The majority of predictive models in NLP are trained with real-world text samples, which are unavoidably biased by the context in which they are written and the demographic of who writes them~\cite{geo-lexical-variation,social-media-language,secret-life-of-pronouns}. In consequence, there is a high chance that the models replicate those biases. This can lead models to pick up pattenrs that do not generalizes to other contexts or demographics, or rely on undesired relations, resulting in unfair or harmful predictions~\cite{machine-bias-book,bias-and-fairness-in-ML,Weapons-of-math-destruction,predictive-bias-NLP}. Even if the data does not present undesired biases, models themselves can display unintended biased behavior due to certain design choices~\cite{bias-and-fairness-in-ML}, or inherit them from biased representations~\cite{man-is-to-computer,WEAT}.
+
+Unintended biases, for prediction tasks in NLP, can be divided into four categories according to the source of the bias~\cite{predictive-bias-NLP}:
+
+\begin{itemize}
+    \item \textbf{Label Bias:} Emerges when the model learns predictions that diverge substantially from the ideal distribution, product of labels aligned with a (not desired) biased reality.
+    \item \textbf{Selection Bias:} Emerges when the model learns from data that is non-representative of the distribution to where it would be applied.
+    \item \textbf{Overamplification:} Emerges when the model itself pick up small difference in the data, and amplify them to be much larger in the predicted outcomes.
+    \item \textbf{Semantic Bias:} Emerges when the embeddings used by the model encode biased relations.
+\end{itemize}
+
+% -----------------------------------------------------
+
+% Origins of unintended bias \cite{predictive-bias-NLP}:
+%
+%   - Label Bias: The labels are biased. "diverges      substantially from the ideal distribution"
+%   - Selection Bias: Produced by non-representative observations. Training data has a different distribution to where the model would be applied.
+%   - Overamplification: "the model may pick up small difference in human factors, and amplify these to be much larger in the predicted outcomes"
+%   - Semantic Bias: Embeddings are biased
+%
+% All can be expressed in terms of the difference between an intended (or real) distribution and the resulting distribution
+
+
+
+% ---------------------------------------------------
+
+% word embeddings assings gender to genderless words \cite{man-is-to-computer}
+
+% "work in NLP focuses on curing the symptoms of these biases, without trying to drill out their origins. This leads to the developed systems fixing only a specific type of the bias (for eg. gender) and not being able to generalize to cure others (like racial biases)." \cite{fairness-survey}
+

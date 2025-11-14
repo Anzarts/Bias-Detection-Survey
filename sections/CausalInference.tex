@@ -1,0 +1,27 @@
+\section{Indirect Effect}
+\label{sec:indirect-effect}
+
+In our hiring model example (Section \ref{sec:intro}), the model express a gender bias, but the actual association encoded in the model is between the length of sentences and variety of words, which correlates with gender, and the acceptability for the job. In fact, the model does not even recieve any information regardign gender. In this toy scenario, gender has no direct effect, but it has a significant indirect effect.
+
+The effect that a variable has over an outcome can be decomposed as the sum of its direct effect and its indirect effect. The direct effect is a quantification of the influence that a variable has on an outcome, that is not mediated by other variables. Let $X$ be the varieble whose effect we seek to assess, $Y$ the response variable, and $Z$ the set of all the intermediate variables between $X$ and $Y$. The direct effect of $X$ over $Y$ measures the sesivity of $Y$ to changes in $X$, while $Z$ is held fixed~\cite{indirect-effect}. Formaly, the direct effect of an event $X=x$ is given by
+
+\begin{equation}
+    DE(x, x^*;Y)=Y_{xZ_{x^*}} - Y_{x^*}
+\end{equation}
+
+where $x^*$ is a reference value for $X$ and the notation $Y_x$ is used to represent the value $Y$ would attain when $X$ is set to be $x$. In contrast, the indirect effect of an event $X=x$ quantify the sensitivity of $Y$, to changes in the mediators $Z$ induced by $X=x$. This is equivalent to measure the change in $Y$ when $Z$ is set to the value it would attain under $X=x$, while $X$ is held fixed at the reference value~\cite{indirect-effect}. The indirect effect is given by
+
+\begin{equation}
+    IE(x, x^*;Y)=Y_{x^*Z_{x}} - Y_{x^*}
+\end{equation}
+
+The indirect effect is an important factor to consider when analysing bias that is often neglected. In the hiring model example, the idea that the model a bias realated to $X$ (gender) is rejected at first, because is obvious that $X$ has no direct on $Y$ (the output). The inderect effect, and subsequently the bias, is probed after finding, by chance, the mediator $Z$ (length of sentences and variety of words) between $X$ and $Y$. In this case is evident that $X$ has no direct effect, as it is not part of the input, but there can be similar escenarios where $X$ is in the input. Consider the following alternative version of the example:
+
+\begin{displayquote}
+    The company, aware that their model will be acused of perpetuating gender bias, include the gender of the applicants, adding two identical copies of each of them, varying only the gender, to the training data, in other to prevent the bias. After puting the model in use, the company is denounced by the association, allegating that the model perpetuates gender bias.
+\end{displayquote}
+
+In this alternative version of the example, $X$ is modified in the input, but $Z$ remains in its original value, so the model learns the same association between $Z$ and $Y$. The direct effect of $X$ on $Y$ is low, but the bias persist. In order to achieve a complete bias detection, it is imperative to ensure that the detection method is assessing the total effect and not only the direct effect.
+
+If, as in the example, bias is dominated by an indirect effect, it may be necessary a characterization of the mediator variables $Z$ to effectively debias the model. However, in general, $Z$ is an unknown variable, and can correspond to a feature that is not explicity represented in the data. While $X$ can be directly observed and intervented, $Z$ must be found. We denominate as confirmatory analysis to verify or measure the effect of $X$ over $Y$, and as exploratory analysis to to verify or measure the effect of a mediator $Z$, between $X$ and $Y$. In other words, confirmatory detection methods detect an association that involves a target variable, and exploratory detection methods can detect an association that involves a previously unknown variable.
+
