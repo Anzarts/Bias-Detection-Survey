@@ -72,12 +72,25 @@ An organization against gender bias, dertermined to demonstrate that the model u
 
 We have previously stated that, in the example, the bias is the association of gender with qualification for the job. To be precise, this is the social bias being replicated by the model. Here, even if a metric indicates that the answers of the model are biased, it does not explain why it happens, because it is only measuring the social bias in its responses. After examining a set of input-output samples, it is found a correlation between a single attribute of the input and a particular output, an association can be called a prediction bias. We define social and prediction biases as follows:
 
+\begin{paracol}{2}
+
 \begin{itemize}
-    \item \textbf{Social Bias:} Prejudices and associations, related to social groups, made by humans. It can be learned ans expressed by predictive model. In the example this would be gender discrimination.
-    \item \textbf{Prediction Bias:} Association between variables encoded in the computation of the model. In the example this would be the correlation between the variables sentence lenght and word diversity and the outcome.
+    \item\textbf{Social Bias:} Prejudices and associations, related to social groups, made by humans. This would be gender discrimination in the example.
+    \item\textbf{Prediction Bias:} Association between variables encoded in the operations of the model. This would be the correlation between the variables sentence lenght and word diversity and the outcome in the example.
 \end{itemize}
 
-Social bias can ogirinate and be a consequence of prediction bias, but prediction bias does not implicate social bias. We provide further discussion and previously definitions of the concept of prediction bias in Section \ref{sec:bias}.
+Social bias can ogirinate and be a consequence of prediction bias, but prediction bias does not implicate social bias. We provide further discussion and previously definitions of the concept of prediction bias in Section \ref{sec:bias}. Figure \ref{fig:bias-diagram} ilustrates de application of both terms.
+
+\switchcolumn
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{Imgs/bias_diagram.drawio.pdf}
+    \caption{Use of the term ``bias'' in bias measurement and explainability methods.}
+    \label{fig:bias-diagram}
+\end{figure}
+
+\end{paracol}
 
 \subsection{Prediction Bias Analysis}
 
