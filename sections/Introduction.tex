@@ -1,18 +1,6 @@
 \section{Introduction}
 \label{sec:intro}
 
-% As the influence and scope of algorithms increase, academics, policymakers and journalists have raised concerns that these tools might inadvertedly encode and entech human biases \cite{measures-of-fairness} *
-
-% predictive models in NLP are sensitive to (often unintended) bias \cite{predictive-bias-NLP} *
-
-% bias can lead to social undesirable effects, by systematically mispredicting or underserving certain demographic goups \cite{predictive-bias-NLP}
-
-% undetected and unassessed biases can lead to negative consequences \cite{predictive-bias-NLP} *
-
-% Biased predictions emerge from hidden on neglected biases in the model or data \cite{bias-and-fairness-in-ML} *
-
-% when applied in real-world applications, biased models have the potential for negative societal impacts \cite{sociodemographic-bias,NLP-risk-child-protective-service,critical-survey-on-bias} *
-
 Alongside the increase in capacity and influence of algorithms, there is an increase in the concerns and risks of them inadvertedly perpetuating human biases~\cite{measures-of-fairness,Weapons-of-math-destruction}. This phenomenon is particularly evident in the context of neural networks developed for Natural Language Processing (NLP), as they learn directly from human-generated texts. The delegation of the decision-making process to these algorithms has the potential to engender negative societal impact if there are undetected or neglected biases~\cite{critical-survey-on-bias,NLP-risk-child-protective-service,sociodemographic-bias,bias-and-fairness-in-ML,predictive-bias-NLP}.
 
 In this survey we present a brief review of bias and explainability methods, and discuss their applibility in prediction bias analysis. We will use the term predictive model (in NLP), to refer to any model that takes text as input, and produce a prediction, decision or classification as output (e.g., toxic text classification or spam filtering). An explainability method would be any method designed to provide insight about how the prediction is made, such as which variables are relevant or what information is being processed at a determined layer of the model.
@@ -29,7 +17,7 @@ A certain company is acused of favoring men over women in their hiring process. 
 
 % El objetivo de esta survey no es decir que harmful o que no, sino sólo categorizar sesgos en general y cómo encontrarlos
 
-In this example, the bias is the association of gender with qualification for the job, and it is originated by the use of biased training data. In Section \ref{sec:bias} we provide a more precise definition of bias in NLP and its origins.
+In this example, the bias is the association of gender with qualification for the job, and it is originated by the use of biased training data. %In Section \ref{sec:bias} we provide a more precise definition of bias in NLP and its origins.
 
 % -------------------------------------------
 
@@ -42,44 +30,24 @@ In general, bias measuring works choose a bias, such as gender or racial bias, a
 
 % ----------------------------
 
-% we propose to address the problem from a new scope | give more weight to this other scope
-
-% No son todos los trabajos en bias, pero se espera que sean los suficientemente relevantes y representativos
-
-% No todos son directamente de bias, pero son metodologias que se pueden utilizar para el caso
-
-% Decidir si un bias es harmful va despues de definir el bias -> se deben primero encontrar los sesgos, deseados o no
-
-% Denuevo, el objetivo es discovery, no measuring or mitigation
-
-% Aquí bias es bias y unintended bias es unintended bias
-
-% Diferenciar bias de fairness
-
-% Otra categoría útil puedeser sí es que el método sólo advierte de la presencia de sesgo o da algún indicio de su naturaleza -> métricas de fairness tenderían al primer caso
-
-% poner running examples en la intro, usar retórica de fairness para justifica interés en sesgos
-
-% bias discovery no es sólo señalar si existe sesgo o no, sino entregar algún indicio de caracterización del sesgo en cuestión
-
-We argue that these problems may come from an indiscriminate use of the term bias to refer to two different terms: \textit{Social Bias} and \textit{Prediction Bias}. To better explain this idea, we will continue with the hiring model example:
-
-%We propose an alternative approach to addressing the issue of bias in predictive models. Rather than measuring the extent of bias in a model, we endeavor to identify the biased associations that the model makes.
+We argue that these issues in the analysis of bias may come from an indiscriminate use of the term bias to refer to two different terms: \textit{Social Bias} and \textit{Prediction Bias} (Figure \ref{fig:bias-diagram}). To better explain this idea, we will continue with the hiring model example:
 
 \begin{displayquote}
 An organization against gender bias, dertermined to demonstrate that the model used by the company is biased, recolect of 100 applicants and their results. They find that men were accepted 4 times more than women, even when they have similar background. With this fairness test, the organization is sure that the model favors men over women, however, the company points out a key detail, the resumes are anonimized, so the model does not has any information regarding gender, and thus cannot be biased. The organization review the applications again, this time focusing on the diference between accepted and rejected resumes. They find that the rejected resumes tend to use longer sentences with more unique words, and that this characteristic is more frequent in women resumes\footnote{This toy example is based on the findings of Qu et al.\cite{gender-resume-differences}}. After editing the resumes to have a similar style and passing them to the model, it is found that the rejection rate is now equitative between men and women, probing that it was, in fact, biased.
 \end{displayquote}
 
-We have previously stated that, in the example, the bias is the association of gender with qualification for the job. To be precise, this is the social bias being replicated by the model. Here, even if a metric indicates that the answers of the model are biased, it does not explain why it happens, because it is only measuring the social bias in its responses. After examining a set of input-output samples, it is found a correlation between a single attribute of the input and a particular output, an association can be called a prediction bias. We define social and prediction biases as follows:
+We have previously stated that, in the example, the bias is the association of gender with qualification for the job. To be precise, this is the social bias being replicated by the model. Here, even if a metric indicates that the answers of the model are biased, it does not explain why it happens, because it is only measuring the social bias in its responses. After examining a set of input-output samples, it is found a correlation between a single attribute of the input and a particular output, an association can be called a prediction bias.
 
 \begin{paracol}{2}
+
+We define social and prediction biases as follows:
 
 \begin{itemize}
     \item\textbf{Social Bias:} Prejudices and associations, related to social groups, made by humans. This would be gender discrimination in the example.
     \item\textbf{Prediction Bias:} Association between variables encoded in the operations of the model. This would be the correlation between the variables sentence lenght and word diversity and the outcome in the example.
 \end{itemize}
 
-Social bias can ogirinate and be a consequence of prediction bias, but prediction bias does not implicate social bias. We provide further discussion and previously definitions of the concept of prediction bias in Section \ref{sec:bias}. Figure \ref{fig:bias-diagram} ilustrates de application of both terms.
+Social bias can ogirinate and be a consequence of prediction bias, but prediction bias does not implicate social bias. We provide further discussion and previously definitions of the concept of prediction bias in Section \ref{sec:backgroun:bias}.
 
 \switchcolumn
 
@@ -93,10 +61,29 @@ Social bias can ogirinate and be a consequence of prediction bias, but predictio
 \end{paracol}
 
 \subsection{Prediction Bias Analysis}
+\label{sec:intro:prediction_bias_analysis}
 
-We denominate this procedure of finding associations as bias detection. In the example, the association is identified through manual examination. However, it would be preferable to have a mechanism capable of automatically detecting bias. 
+We indentify an alternative approach for addressing the analysis of bias in predictive models, which could lead to better debiasing methods, in the distintion of social and prediction bias. Rather than measuring the extent to which social bias is expressed by a model, we endeavor to identify the prediction bias, i.e., the biased associations that the model makes.
 
-In this short survey we review some methods that can be eployed, or repurposed, to perform this task. The scope of the survey is restricted to methods that can be applied on predictive models with transformer architecture. We divide the methods in two categories: examination methods (Section \ref{sec:examination}), that examinates the representations used or generated by the model and its operations, and example generation methods (Section \ref{sec:examples}), that generates examples that might show the biases of the model. We also indicate if the methods are useful for a confirmatory or exploratory bias analysis. The definitions of both analyses are provided in Section \ref{sec:indirect-effect}.
+Even though, in general, we want to reduce the social bias expressed by the model, which is product of its prediction bias, and that this prediction bias is caused by the existence of social bias, they are not equivalent. Only proving or measuring the presence of social bias in the responses of the model does not give enough information regarding the prediction bias, and can led to unaccurate assesments or insufficient debiasing. Consider the following alternative version of the example:
+
+\begin{displayquote}
+    The company, aware that their model will be accused of perpetuating gender bias, decides to include the gender of the applicants in the input, and train the model following a debiasing procedure. The procedure consist in duplicate each resume in the training data, varying only the gender, in other to prevent the model from learning bias. Once the training is finished, they test the model and find that gender has no correlation with the output, so the company decides that it is safe to use. Some months after puting the model in use, the company recieve a denounce by the organization, allegating that the model perpetuates gender bias.
+\end{displayquote}
+
+In this scenario social bias and prediction bias are confounded. The debiasing method and bias analysis are aimed toward the declared applicant's gender, assuming that the model would learn an explicit association between gender and qualification. A complete analysis of prediction bias is neglected, failing identify the actual association that cuase the model to expressed social bias.
+
+%Even though bias detection is relevant as already proposed, methods for explicitly addressing this task are scarce.  Despite this, we identify an abundance of related methods that even though were not specifically designed for this task could be readily adapted for it. 
+
+We denominate the process of indentifying and proving associations in the model as predictive bias analysis. Even though prediction bias is relevant as already proposed, methods for explicitly addressing predictive bias analysis are scarce. Despite this, we identify an abundance of related methods that even though were not specifically designed for this task could be readily adapted for it.
+
+%In the example, the association is identified through manual examination. However, it would be preferable to have a mechanism capable of automatically detecting bias. 
+
+This survey's scope is to structure these works to present them in a unified way, focused around their applibility for the purpouse of prediction bias analysis. In particular, we review and discuss the applibility in prediction bias analysis of methods across 4 explainability paradigms: (1) embedding association, (2) concept erasure, (3) ablation, (4) counterfactual examples, and (5) activation maximiztion. We categorize these methods into 2 groups regarding how they work, and into 2 groups regarding the previously information they require about the variables. The first groups are: (I) Examination methods, that examinates the representations used or generated by the model or its operations; and (II) example generation methods, that generates examples that might show the biases of the model. The other 2 groups are: (III) Confirmatory methods, that verify if there is bias associated to a known variable; and (IV) Exploratory methods, that can found previously unknown variables related a bias. Additionally, we discuss the concepts of direct and indirect effect, which we found crucial to understand prediction bias analysis, and that can serve to further improve future methods in the field.
+
+The remaining of this document is structured as follows: in Section \ref{sec:backgroun:bias}; in Section \ref{sec:backgroun:indirect-effect}; in Section \ref{sec:examination}; in Section \ref{sec:examples}; 
+
+% The scope of the survey is restricted to methods that can be applied on predictive models with transformer architecture.
 
 \begin{table}
     \centering
