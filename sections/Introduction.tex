@@ -3,15 +3,15 @@
 
 Alongside the increase in capacity and influence of algorithms, there is an increase in the concerns and risks of them inadvertedly perpetuating human biases~\cite{measures-of-fairness,Weapons-of-math-destruction}. This phenomenon is particularly evident in the context of neural networks developed for Natural Language Processing (NLP), as they learn directly from human-generated texts. The delegation of the decision-making process to these algorithms has the potential to engender negative societal impact if there are undetected or neglected biases~\cite{critical-survey-on-bias,NLP-risk-child-protective-service,sociodemographic-bias,bias-and-fairness-in-ML,predictive-bias-NLP}.
 
-In this survey, we present a brief review of bias evaluation and explainability methods, and discuss them through the scope of prediction bias analysis. We will use the term predictive model (in NLP), to refer to any model that takes text as input, and produces a prediction, decision, or classification as output (e.g., toxic text classification or spam filtering). In the same line, an explainability method would be any method designed to provide insight regarding the prediction process, such as which variables are relevant or what information is being processed at a specific layer of the model.
+In this survey, we present a brief review of bias evaluation and explainability methods, and discuss them through the scope of Prediction Bias Analysis. We will use the term predictive model (in NLP), to refer to any model that takes text as input, and produces a prediction, decision, or classification as output (e.g., toxic text classification or spam filtering). In the same line, an explainability method would be any method designed to provide insight regarding the prediction process, such as which variables are relevant or what information is being processed at a specific layer of the model.
 
-Before deliniating the concept of prediction bias analysis, to ilustrate the risks of unassessed biases in predictive models in NLP, consider the following toy example:
+Before deliniating the concept of Prediction Bias Analysis, to ilustrate the risks of unassessed biases in predictive models in NLP, consider the following toy example:
 
 \begin{displayquote}
 \textbf{\textsc{Ex1}} A certain company is accused of favoring men over women in their hiring process. To solve this problem, the company decides to leave the process to a neural network. This network reads an applicant's anonimized resume, and determines if they should be hired or not. The network is trained with the data from the previous processes, so it replicates the same biases. The next time the company is questioned about its hiring process, they respond that it is managed by an algorithm and, unlike humans, algorithms are objective, so if more men than women are hired, it must be because there are more men who are better qualified for the job.
 \end{displayquote}
 
-In this example, the bias is the association of gender with qualification for the job, and it is originated by the use of biased training data. A proper evaluation of bias is neglected, and an undesired bias is perpetuated, or even worsened, under the illusion of ``objective'' prediction.
+In this example, the bias is the association of gender with qualification for the job, and it is originated by the use of biased training data. A proper evaluation of bias is neglected, and an undesired bias is perpetuated, or even worsened, under the illusion of ``objective'' predictions.
 
 %In Section \ref{sec:bias} we provide a more precise definition of bias in NLP and its origins.
 
@@ -22,7 +22,7 @@ A substantial corpus of research has been dedicated to the examination of bias i
 
 In general, bias measuring works choose a bias, such as gender or racial bias, and propose a metric to quantify the presence of this bias in either the model representations or responses. These are referred in the literature as intrinsic and extrinsic metrics, respectively~\cite{quantifying-social-bias,sociodemographic-bias}. Intrinsic metrics have been found to not correlate with the responses of the model~\cite{intrinsic-not-correlate}, while extrinsic metrics are a subcategory fairness metrics~\cite{measures-of-fairness}, which, in turn, are metrics directly designed to measure the consequences and symptoms of biases (or other problematic elements), rather than the bias itself.
 
-% ----------------------------
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 We argue that these issues in the analysis of bias may come from an indiscriminate use of the term bias, to refer to two different terms: \textit{Social Bias} and \textit{Prediction Bias} (Figure \ref{fig:bias-diagram}). To better explain this idea, we will continue with the hiring model example:
 
