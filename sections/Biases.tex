@@ -1,9 +1,9 @@
 \section{Background}
 \label{sec:background}
 
-In this section we review some basic concepts necessary for a better discussion of Prediction Bias Analysis. In Section \ref{sec:backgroun:bias} we expand the definition of Prediction Bias with the concept of unintended bias, which is the subcategory of potentially harmful biases. In Section \ref{sec:backgroun:indirect-effect} we review the concepts of direct and indirect effect from the causal infenrence literature, which quantify the extent to which a variable if influenced by another. In the context of Prediction Bias Analysis, they correspond to two complementary assessments, necessary to identify Prediction Bias.
+In this section we review some basic concepts necessary for a better discussion of Prediction Bias Analysis. In Section \ref{sec:backgroun:bias} we expand the definition of Prediction Bias with the concept of unintended bias, which is the subcategory of potentially harmful biases. %In Section \ref{sec:backgroun:indirect-effect} we review the concepts of direct and indirect effect from the causal infenrence literature, which quantify the extent to which a variable if influenced by another. In the context of Prediction Bias Analysis, they correspond to two complementary assessments, necessary to identify Prediction Bias.
 
-\subsection{Bias in Predictive Model for NLP}
+\subsection{Prediction Bias in NLP}
 \label{sec:backgroun:bias}
 
 % Bias is the prior information of the models \cite{fairness-survey}
@@ -24,14 +24,17 @@ Biases can be harmful when they come from harmful precedents~\cite{WEAT}. Biases
 
 The majority of predictive models in NLP are trained with real-world text samples, which are unavoidably biased by the context in which they are written and the demographic of who writes them~\cite{geo-lexical-variation,social-media-language,secret-life-of-pronouns}. In consequence, there is a high chance that the models replicate those biases. This can lead models to pick up pattenrs that do not generalizes to other contexts or demographics, or rely on undesired relations, resulting in unfair or harmful predictions~\cite{machine-bias-book,bias-and-fairness-in-ML,Weapons-of-math-destruction,predictive-bias-NLP}. Even if the data does not present undesired biases, models themselves can display unintended biased behavior due to certain design choices~\cite{bias-and-fairness-in-ML}, or inherit them from biased representations~\cite{man-is-to-computer,WEAT}.
 
-Unintended biases, for prediction tasks in NLP, can be divided into four categories according to the source of the bias~\cite{predictive-bias-NLP}:
+Unintended biases, for predictive model in NLP, can be divided into four categories according to the source of the bias~\cite{predictive-bias-NLP}:
 
 \begin{itemize}
-    \item \textbf{Label Bias:} Emerges when the model learns predictions that diverge substantially from the ideal distribution, product of labels aligned with a (not desired) biased reality.
-    \item \textbf{Selection Bias:} Emerges when the model learns from data that is non-representative of the distribution to where it would be applied.
-    \item \textbf{Overamplification:} Emerges when the model itself pick up small difference in the data, and amplify them to be much larger in the predicted outcomes.
-    \item \textbf{Semantic Bias:} Emerges when the embeddings used by the model encode biased relations.
+    \item \textbf{Semantic Bias:} Emerges when the word-embeddings used by the model encode biased relations. \textit{The information represented in the embeddings include a Social Bias (e.g., gender in genderless words).}
+    \item \textbf{Label Bias:} Emerges when the model learns predictions that diverge substantially from the ideal distribution, product of labels aligned with a (not desired) biased reality. \textit{The training data is affected by a Social Bias, as in in the hiring model example (}\textsl{Ex1}\textit{)}.
+    \item \textbf{Selection Bias:} Emerges when the model learns from data that is non-representative of the distribution to where it would be applied. \textit{The training data is selection is affected by a Social Bias (e.g., use mostly texts written by middle-
+aged white men).}
+    \item \textbf{Overamplification:} Emerges when the model itself pick up small difference in the data, and amplify them to be much larger in the predicted outcomes. \textit{The model develops its own unintended Prediction Bias, without the influence of a Social Bias.}
 \end{itemize}
+
+As signalled in the text in cursive, these categories of origin of unintended bias correspond to different forms of how Social Bias can cause Prediction Bias. Identifying the origin of bias can help for the development of unbiased models, however it requieres analysis beyond the boundaries of Prediction Bias Analysis, so we will not cover it in this work.
 
 % -----------------------------------------------------
 
