@@ -67,12 +67,16 @@ where $\delta$ is a threshold for the distance between $a$ and $y$.
 
 The uses and limitation of Analogy Generation for Prediction Bias Analysis are basically the same as WEAT, as it designed for establishing associationn between inputs.
 
+% - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Even though Embedding Association methods, by their own, are unable to assess relationships between features of the input with the responses of a model, they supose an important starting point for the development of subsequent methods. Specifically, they propose mechanisms for analizing the information encoded in the word-embeddigs and contextualized embeddigs, and the idea that different features, or concepts, are represented in directions, i.e. subspaces, of the embeddig space.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 \subsection{Concept Erasure}
 \label{sec:examination:erasure}
 
-Given a set of vector representations $X=\{x_i\}^N_{i=1}\subseteq \mathbb{R}^d$ (e.g., word-embeddings) and a set of response variables $C=\{y_i\}^N_{i=1}$ that indicates a concept in the vectors (e.g., gender, verb tenses), Concept Erasure methods implement some function $r: \mathbb{R}^d\to \mathbb{R}^{d'}$, such that the resulting vectors $r(x_i)$ preserve as much information as possible, while not being predictive of concept $C$.
-
-Concept Erasure offers the input-output relationship assessment that Embedding Association lacks. While Embedding Association can prove the presence of a concept $C$ in the representations, Concept Erasure, by removing $C$, provides a way to evaluate is the concept is relevant for the model's predictions.
+Concept Erasure offers the input-output relationship assessment that Embedding Association lacks. Given a set of vector representations $X=\{x_i\}^N_{i=1}\subseteq \mathbb{R}^d$ (e.g., word-embeddings) and a set of response variables $\mathcal{C}=\{y_i\}^N_{i=1}$ that indicates a concept in the vectors (e.g., gender, verb tenses), Concept Erasure methods implement some function $r: \mathbb{R}^d\to \mathbb{R}^{d'}$, such that the resulting vectors $r(x_i)$ preserve as much information as possible, while not being predictive of concept $\mathcal{C}$. While Embedding Association can prove the presence of a concept $\mathcal{C}$ in the representations, Concept Erasure, by removing $\mathcal{C}$, provides a way to evaluate is the concept is relevant for the model's predictions.
 
 % - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -80,7 +84,7 @@ Concept Erasure offers the input-output relationship assessment that Embedding A
 
 % puede encontrar sesgos al comparar instancias similares en la proyección y distintas en el original
 
-Relaxed Linear Adversal Concept Erasure (R-LACE)~\cite{R-LACE} is a method designed for the task of Concept Erasure in the word-embbedings or inner representations. To erase a concept, R-LACE first finds a subspace $B\subseteq \mathbb{R}^d$ that contains the information of the target concept, within the representations, and then projects the vector representations into the ortogonal complement of $B$. The subspace $B$ is determined by solving the minmax problem:
+Relaxed Linear Adversal Concept Erasure (R-LACE)~\cite{R-LACE} is a method designed for the task of Concept Erasure in the word-embbedings or inner representations. To erase a concept, R-LACE first finds a subspace $\mathcal{B}\subseteq \mathbb{R}^d$ that contains the information of the target concept $\mathcal{C}$, within the representations, and then projects the vector representations into the ortogonal complement of $\mathcal{B}$. The subspace $\mathcal{B}$ is determined by solving the minmax problem:
 
 \begin{equation}
     \min_{\theta}\max_{P}\sum^N_{i=1}\mathcal{L}(y_i,g^{-1}(\theta^T P x_i))
@@ -90,12 +94,14 @@ where $f_\theta(x) = g^{-1}(\theta^T x)$ is a generalized linear model, with par
 
 Note that the definition of R-LACE does not require to have an explicit definition of the concept to be erased, just to know the response variables. R-LACE can be repurposed for bias detection, at the level of the inner representations, for both Confirmatory Analysis and Exploratory Analysis.
 
-Let $X$ be the inner representations given by some layer of a predictive model $M$, $C$ a response variable associated to a given concept, and $r(X) = \{r(x_i)\}^N_{i=1}$ the resulting vectors after applying R-LACE on $X$ to erase $C$. R-LACE can be employed for Confirmatory Analysis if $C$ indicates a known features of the input. In this case, if the responses of $M$ over $X$ cannot be replicated for $r(X)$, that would indicate that $C$ has a direct effect on the model's predictions.
+Let $X$ be the inner representations given by some layer of a predictive model $M$, $\mathcal{C}$ a response variable associated to a given concept, and $r(X) = \{r(x_i)\}^N_{i=1}$ the resulting vectors after applying R-LACE on $X$ to erase $\mathcal{C}$. R-LACE can be employed for Confirmatory Analysis if $\mathcal{C}$ indicates a known features of the input. In this case, if the responses of $M$ over $X$ cannot be replicated for $r(X)$, that would indicate that $\mathcal{C}$ has a direct effect on the model's predictions.
 
-To employ R-LACE for Confirmatory Analysis, the response variable $C$ can be defined an indicator of whether a representation $x_i$ is assigned to a given prediction $y$ or not. If there are two instances $a$ and $b$, such that their representations are similar after applying R-LACE, $r(x_a)\approx r(x_b)$, but not before, $x_a \not\approx x_b$, then a Prediction Bias, related to the output $y$, might be found difference between $a$ and $b$.
+To employ R-LACE for Confirmatory Analysis, the response variable $\mathcal{C}$ can be defined an indicator of whether a representation $x_i$ is assigned to a given prediction $y$ or not. If there are two instances $a$ and $b$, such that their representations are similar after applying R-LACE, $r(x_a)\approx r(x_b)$, but not before, $x_a \not\approx x_b$, then a Prediction Bias, related to the output $y$, might be found difference between $a$ and $b$.
 
 \subsection{Model Ablation}
 \label{sec:examination:ablation}
+
+Concept Erasure offers mechanisms to assess the effect of features of the input, through the definition of the response variable $\mathcal{C}$ that indicates the present of a concept and the subspace $\mathcal{B}$ that encode such concept. Model Ablation, on the other hand, provides definitions and mechanisms to assess the causes of a particular response of a predictive model.
 
 The objective of Model Ablation methods is to modify the behavior of a model by removing or nullifying a subset of its components, such as neuron or connections between them. Model Ablation can by employed for Prdiction Bias Analysis following a similar logic to application of Concept Erasure. If a determined behavior of the model, with respect to a set of inputs $\mathcal{D}$, is nullified after ablating a component $G_\mathcal{D}$, it can be inferred that $G_\mathcal{D}$ computes a Prediction Bias associated to $\mathcal{D}$.
 
@@ -119,6 +125,15 @@ After the optimization is finished, the edges whose weight does not surpase a sp
 
 If $\mathcal{D}$ is set to represent a biased behavior (Social Bias), and TEA is capable of effectively removing it from the model, then that would comfirm that $M$ computes the specified bias. Moreover it would indentify the components of $M$ that compute the Prediction Bias. If it is complementes with a method to analize the inner representations, it could help to identify the input's features associated to the bias, by comparing the inner representations before and after the ablation.%\cite{geometry-of-truth}
 
+% - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\subsection{Discussion}
+\label{sec:examination:discussion}
+
+Each paradigm of explainability considered under the category of Examination Methods provide different pieces for a framework of Prediction Bias Analysis. Even though Concept Erasure and Model Ablation original purpouse is not directly the analysis of bias in a predictive model, their definitions of concepts ($\mathcal{C}$ and $\mathcal{B}$) and behavior ($\mathcal{D}$), in conjunction, serve as a formalization of the idea of the association between input and output variables that defines a Prediction Bias. For the same reason, can be repurposed for Prediction Bias Analysis and can work as base for further methodologies developed specifically for the task.
+
+Examination methods, with the execption of Embedding Association, are capable of identifying and measuring the effect of features of the input over the predictions of a model. This is specially useful for Confirmatory Analysis, however, its results for Exploratory Analysis lack interpretability. These methods can give strong evidence of the existence and effect of unknown variables over the model's prediction, but these variables are often characterized by differences in a vector space, which is not easy to interpret. An approach that could bring Exploratory Analysis closer to human understanding is the generation of input-output pairs that display different behaviors of the model.
+
 % =================================================
 
 \section{Example Generation}
@@ -131,7 +146,9 @@ In this section, we review some methods that can be employed to gain insight on 
 
 Activation Maximization methods aim to generate input samples that maximize the activation of some neuron of the model, in order to uncover to which features this neuron is sensible. Given a neuron whose activation is interpretable, such as the prediction layer's logits, Activation Maximization can be employed for Exploratory Analysis, to seek for features of the inputs that are associated with the activation of the target neuron.
 
-Here we review two methods for Activation Maximization: Preferred Input Synthesis~\cite{synthetisizing-Nguyen} and Evolutionary Input Optimization~\cite{synthetisizing-Barbalau}. Both of them generate its examples with a generative model, a neural network $G: Z\to X$ that maps points from a vector space, called latent space, into text. The former following a white-box approach and the later a black-box approach. Despite this difference, their appliability of Prediction Bias Analysis is the same.
+Here we review two methods for Activation Maximization: Preferred Input Synthesis~\cite{synthetisizing-Nguyen} and Momentum Evolutionary Input Optimization~\cite{synthetisizing-Barbalau}. Both of them generate its examples with a generative model, a neural network $G: Z\to X$ that maps points from a vector space, called latent space, into text. The former following a white-box approach and the later a black-box approach. Despite this difference, their appliability of Prediction Bias Analysis is the same. Through the maximization of the logit corresponding to an output variable $y$, they provide examples that exhibit the feature more associated to $y$ by a predictive model.
+
+An important limitation of these methods is that, for each target output, they cannot provide a wide variety of examples, and that the inputs that maximize the logit may exhibit trivial associations (e.g., a comment that only has the word ``die'' for toxic comment classification). They are alse constrained to the capacity of the generative model $G$, and there exist the posibility of the generated examples being affected by the biases of $G$. However, this constraint could offer an alternative to overcome this limitations, if $G$ modified to enforce additional conditions on the generated samples, such as grammatical coherence or diversity.
 
 \subsubsection{Preferred Input Synthesis}
 
@@ -146,7 +163,7 @@ where $\lambda$ is a regularization term and the optimization is performed with 
 
 \subsubsection{Momentum Evolutionary Input Optimization}
 
-The Evolutionary Input Optimization (MEIO)~\cite{synthetisizing-Barbalau} method is a generic framework for Activation Maximization that propose a model-agnostic approch, with a zero-order optimization on the latent space of a generative model. Given a predictive model $M:X\to Y$, a generative model $G:Z\to X$, and a target prediction $y\in Y$, MEIO generate samples by solving:
+The Momentum Evolutionary Input Optimization (MEIO)~\cite{synthetisizing-Barbalau} method is a generic framework for Activation Maximization that propose a model-agnostic approch, with a zero-order optimization on the latent space of a generative model. Given a predictive model $M:X\to Y$, a generative model $G:Z\to X$, and a target prediction $y\in Y$, MEIO generate samples by solving:
 
 \begin{equation}
     \min_{z\in Z}\mathcal{L}(M(G(z)), y)
@@ -157,7 +174,7 @@ where $\mathcal{L}$ is a loss function. The optimization is performed via an evo
 \subsection{Counterfactual Examples}
 \label{sec:examples:counterfactual}
 
-In machine learning, a counterfactual explanation is defined as an example that illustrates how a different input would result in a different output~\cite{NLP-posthoc-interpret-survey}. In the context of predictive models for NLP, if an input text $X$ gets an output $y$ by the model, a counterfactual example would be any text $X'$, similar to $X$, that yields a different output $y'$~\cite{counterfactual-explanations,NLP-counterfactual-survey}. These modifications on the input, that are both minimal and enought to change the prediction, can highlight which features of the input are participating in a Prediction Bias. In this section we review three differnt methods for counterfactual example generation: POLYJUICE~\cite{polyjuice}, MiCE~\cite{MiCE}, and GYC~\cite{GYC}.
+Counterfactual examples offers a framework to generate examples more diverse and plausible than activation maximization. In machine learning, a counterfactual explanation is defined as an example that illustrates how a different input would result in a different output~\cite{NLP-posthoc-interpret-survey}. In the context of predictive models for NLP, if an input text $X$ gets an output $y$ by the model, a counterfactual example would be any text $X'$, similar to $X$, that yields a different output $y'$~\cite{counterfactual-explanations,NLP-counterfactual-survey}. These modifications on the input, that are both minimal and enought to change the prediction, can highlight which features of the input are participating in a Prediction Bias. In this section we review three differnt methods for counterfactual example generation: POLYJUICE~\cite{polyjuice}, MiCE~\cite{MiCE}, and GYC~\cite{GYC}.
 
 \subsubsection{POLYJUICE}
 
@@ -184,5 +201,11 @@ Let $LM$ be a language model transformer; $LM$ generates a token $y_t$ condition
 
 where $H_{t-1}$ is the history matrix that captures the dependency of $y_{t-1}$ on past tokens and $o_t$ are the output logits, that generate the categorical distribution from which $y_t$ is sampled. To generate a text conditioned on $C$, $H$ is perturbed two times. The first perturbation is to create $\tilde{H}_t$, which enforces the reconstruction of $X$, and next is to create $\hat{H}_t$, which enforces the condition $C$. The perturbations are determined by minimizing a linear combination of three loss functions is employed, one for reconstruction and one enforce the condition, plus another one to ensure diversity. The reconstruction loss maximizes the log probability of the input text, the condition loss maximizes a score assosiated to the condition and the diversity loss maximizes the entropy of the generated logits.
 
-GYC can be employed for both Confirmatory Analysis and Exploratory Analysis, depending on how the condition $C$ is defined. If $C$ enforces the aparition of a certain feature, it can be used to measure the effect of this feature on the output. If $C$ enforces a behavior of the model, it can be used to find features that trigger that behavior. For the Exploratory Analysis, it has the advantage over methods like MiCE that $C$ can enforce more complex conditions that just attaining a given output, such as not inserting already known biases\footnote{e.g., not inserting insults if we are looking for unintended bias in toxic comment classification.}. This reduces the extent to which qualitative analysis is needed to identify the biases.
+GYC can be employed for both Confirmatory Analysis and Exploratory Analysis, depending on how the condition $C$ is defined. If $C$ enforces the aparition of a certain feature, it can be used to measure the effect of this feature on the output. If $C$ enforces a behavior of the model, it can be used to find features that trigger that behavior. In the first case, the condition would be aligned with the definition of concept in Concept Erasure, $C=\mathcal{C}$, while, in the second case, it would aligned with the definition of behavior in Model Ablation, $C=\mathcal{D}$.
 
+For the Exploratory Analysis, it has the advantage over methods like MiCE that $C$ can enforce more complex conditions that just attaining a given output, such as not inserting already known biases\footnote{e.g., not inserting insults if we are looking for unintended bias in toxic comment classification.}. This reduces the extent to which qualitative analysis is needed to identify the biases.
+
+\subsection{Discussion}
+\label{sec:examples:discussion}
+
+Example Generatioin methods have the advantage of providing results in a format that a human can easily understand, and the weaknesses that they are less precise and do not provide strong evidence regarding how a feature affects th output. In general, they need to be complemented with other methods, or employed in very specific tasks or datasets to identify concrete associations. They are also much more sensible to the method's mechanisms. Two different methos, developed with the same objective, can yield to quite different examples, to the extent that some methods may not generate examples with any relevant information, while others of the same family can be highly precise.
