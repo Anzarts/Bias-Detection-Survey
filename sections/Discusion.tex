@@ -1,4 +1,4 @@
-\section{Conclusion}
+\section{Conclusion and Research Oportunities}
 \label{sec:conclusion}
 
 \begin{figure}
@@ -14,4 +14,13 @@ Examination methods can effectively identify and measure the effect of variables
 
 Even though the majority of the methods reviewed in this survey were not designed for Prediction Bias Analysis, they are founded on a common theoretical framework and have compatible objectives. Consequently, they can be repurposed to build a better framework for Prediction Bias Analysis. Concept Erasure defines a concept in the vector representations as a subspace $\mathcal{B}$ that renders the response variable $\mathcal{C}$ sensitive to them. Model Ablation defines a behaivor as a set of inputs $\mathcal{D}$ where a model achieve low values of a given loss function. The idea of concept correlates with the variables encoded in the computations of a model, and the behaivor correspond to a particular effect on the model's predictions. Thus, Prediction Bias Analysis can be defined as the analysis that seeks to identify a concept $\mathcal{B}$ that causes a behaivor $\mathcal{D}$ or measure the effect of a concept $\mathcal{C}$ over a behaivor $\mathcal{D}$. With this definition, the Prediction Bias would be the causal relation between $(\mathcal{B},\mathcal{C})$ and $\mathcal{D}$ (figure \ref{fig:bias-diagram2}).
 
+\subsection{Research Oportunities}
+\label{sec:conclusion:RO}
 
+To finalize this survey, we identify the following research oportunities for Prediction Bias Analysis:
+
+\begin{itemize}
+    \item \textbf{Develope a formal framework:} A well defined mathematical framework for prediction bias is necessary for a better understanding of the concept, to develope more robust methods, and for a better integretion with other existing paradigms and methodologies.
+    \item \textbf{Develope specific methods:} In this work we reviewed methods that were not originally intended for Prediction Bias Analysis and discussed how they could be repurposed for this objective. These repurposed methods can be used as starting point for the development of mthods specifically designed to identify prediction bias. 
+    \item \textbf{More exploratory analisys:} Exploratory and Confirmatory Analysis are completary. Confirmatory Analysis can provide results more robust and interpretable; however, it requires prior knowledge regarding the bias. This knowledge is commonly adquired after using the model and witnessing the consequences of the bias. Exploratory Analysis offers the advantage of adquiring this knowledge in advance. Further improvement of these techniques has the potential of enhancing the capacity of Confirmatory Analysis and providing a more effective prevention of bias.
+\end{itemize}z
